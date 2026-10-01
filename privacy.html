@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123f73">
+
+<title>U.S DEPARTMENT OF THE TREASURY | Privacy Notice — Joint Asset Portfolio</title>
+
+<style>
+:root{
+  --n:#123f73;
+  --n2:#0c315b;
+  --b:#1f6fb2;
+  --bs:#eaf3fb;
+  --ink:#17212b;
+  --mut:#647180;
+  --line:#dce4ec;
+  --bg:#f4f7fa;
+  --w:#fff;
+  --sh:0 10px 30px rgba(18,63,115,.09);
+  --r:18px;
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,"Segoe UI",sans-serif !important;
+  font-synthesis:none;
+}
+
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-size:17px;
+  line-height:1.6;
+}
+
+body *{
+  font-family:inherit !important;
+}
+
+a{
+  color:inherit;
+}
+
+.container{
+  width:min(1120px,calc(100% - 48px));
+  margin:auto;
+}
+
+/* TOP SIMULATION NOTICE */
+
+.sim{
+  background:#102f50;
+  color:#fff;
+  text-align:center;
+  padding:11px 16px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+/* HEADER */
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(12px);
+}
+
+.hi{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+}
+
+.logo{
+  width:48px;
+  height:48px;
+  display:block;
+  object-fit:contain;
+  border-radius:12px;
+}
+
+.bt strong{
+  display:block;
+  color:var(--n);
+  font-size:18px;
+  line-height:1.1;
+}
+
+.bt span{
+  display:block;
+  color:var(--mut);
+  font-size:12px;
+}
+
+.back{
+  text-decoration:none;
+  color:#243447;
+  font-size:14px;
+  font-weight:800;
+}
+
+.back:hover{
+  color:var(--n);
+}
+
+/* PAGE */
+
+main{
+  padding:52px 0 70px;
+}
+
+.hero{
+  text-align:center;
+  max-width:820px;
+  margin:0 auto 30px;
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--bs);
+  color:var(--n);
+  border:1px solid #d4e5f5;
+  border-radius:999px;
+  padding:7px 12px;
+  font-size:12px;
+  font-weight:850;
+  text-transform:uppercase;
+}
+
+.eyebrow i{
+  width:8px;
+  height:8px;
+  background:#3aa56c;
+  border-radius:50%;
+}
+
+.hero h1{
+  margin:18px 0 10px;
+  font-size:clamp(30px,5vw,44px);
+  line-height:1.12;
+  letter-spacing:-.035em;
+  color:var(--n);
+}
+
+.hero p{
+  margin:0 auto;
+  max-width:720px;
+  color:#536273;
+  font-size:17px;
+}
+
+/* CONTENT */
+
+.content{
+  width:100%;
+  max-width:900px;
+  margin:auto;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  box-shadow:var(--sh);
+  overflow:hidden;
+}
+
+.notice{
+  padding:28px 32px;
+  border-bottom:1px solid var(--line);
+}
+
+.notice:last-child{
+  border-bottom:0;
+}
+
+.notice h2{
+  margin:0 0 10px;
+  color:var(--n);
+  font-size:21px;
+  line-height:1.3;
+}
+
+.notice p{
+  margin:0;
+  color:#536273;
+  font-size:15px;
+  line-height:1.75;
+}
+
+.notice p + p{
+  margin-top:12px;
+}
+
+.notice ul{
+  margin:12px 0 0;
+  padding-left:22px;
+  color:#536273;
+}
+
+.notice li{
+  margin:7px 0;
+  font-size:15px;
+  line-height:1.65;
+}
+
+.info{
+  margin-top:17px;
+  padding:15px 16px;
+  background:#f7f9fb;
+  border:1px solid #dfe7ef;
+  border-left:4px solid var(--b);
+  border-radius:11px;
+}
+
+.info strong{
+  display:block;
+  color:var(--n);
+  font-size:14px;
+  margin-bottom:5px;
+}
+
+.info p{
+  font-size:13px;
+  line-height:1.6;
+}
+
+/* FOOTER */
+
+.footer{
+  margin-top:24px;
+  background:#102f50;
+  color:#dce8f3;
+  padding:30px 0 0;
+}
+
+.fg{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  gap:18px;
+}
+
+.footer h3{
+  margin:0;
+  color:#fff;
+  font-size:18px;
+}
+
+.footer p{
+  margin:6px 0 0;
+  font-size:13px;
+  color:#b8cadb;
+}
+
+.fl{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:18px;
+}
+
+.fl a{
+  color:#fff;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  font-size:13px;
+}
+
+.fl a:hover{
+  color:#d8e8f7;
+}
+
+.fb{
+  margin-top:24px;
+  border-top:1px solid rgba(255,255,255,.14);
+  padding:17px 0;
+  text-align:center;
+  font-size:12px;
+  color:#aebfd0;
+}
+
+.footersim{
+  padding:12px 15px;
+  text-align:center;
+  background:#0b2946;
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+@media (min-width: 700px) and (max-width: 1024px) {
+  .wrapper {
+    padding: 42px 42px 50px;
+  }
+
+  .content {
+    padding: 36px 40px 42px;
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:699px){
+
+  .container{
+    width:calc(100% - 36px);
+    max-width:none;
+  }
+
+  .hi{
+    min-height:68px;
+  }
+
+  .logo{
+    width:42px;
+    height:42px;
+  }
+
+  .bt strong{
+    font-size:14px;
+  }
+
+  .bt span{
+    font-size:11px;
+  }
+
+  .back{
+    font-size:12px;
+  }
+
+  main{
+    padding:38px 0 52px;
+  }
+
+  .hero{
+    margin-bottom:22px;
+  }
+
+  .hero h1{
+    font-size:28px;
+  }
+
+  .hero p{
+    font-size:15px;
+    line-height:1.65;
+  }
+
+  .content{
+    border-radius:15px;
+  }
+
+  .notice{
+    padding:22px 18px;
+  }
+
+  .notice h2{
+    font-size:18px;
+  }
+
+  .notice p,
+  .notice li{
+    font-size:14px;
+    line-height:1.65;
+  }
+
+  .info{
+    padding:13px 14px;
+  }
+
+  .footer{
+    padding-top:26px;
+  }
+
+  .fb{
+    font-size:11px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+
+
+<header class="header">
+  <div class="container hi">
+
+    <a class="brand" href="treasurywebsite.html">
+
+      <img
+        class="logo"
+        src="images/Seal_of_the_United_States_Department_of_the_Treasury.svg-removebg-preview.png"
+        alt="U.S DEPARTMENT OF THE TREASURY Joint Asset Portfolio"
+      >
+
+      <span class="bt">
+        <strong>U.S DEPARTMENT OF THE TREASURY</strong>
+        <span>Joint Asset Portfolio Portal</span>
+      </span>
+
+    </a>
+
+    <a class="back" href="treasurywebsite.html">
+      ← Back to portal
+    </a>
+
+  </div>
+</header>
+
+<main>
+
+  <div class="container">
+
+    <div class="hero">
+
+      <div class="eyebrow">
+        <i></i>
+        Privacy &amp; Data Notice
+      </div>
+
+      <h1>Privacy Notice</h1>
+
+      <p>
+        This notice explains how information presented through the 
+        Joint Asset Portfolio portal is treated and provides information 
+        about the types of records and information displayed through the portal.
+      </p>
+
+    </div>
+
+    <div class="content">
+
+      <section class="notice">
+
+        <h2>1. Purpose of this portal</h2>
+
+        <p>
+          The U.S DEPARTMENT OF THE TREASURY Joint Asset Portfolio portal provides an interface for presenting 
+          participant information, portfolio information, asset balances, processing stages,
+           transaction records, and beneficiary instructions within an organized portfolio environment.
+        </p>
+
+        
+
+      </section>
+
+      <section class="notice">
+
+        <h2>2. Information presented on the portal</h2>
+
+        <p>
+          The portal may display information associated with the portfolio record, including:
+        </p>
+
+        <ul>
+          <li>Participant names and profile information.</li>
+          <li>Participant reference identifiers.</li>
+          <li>Masked identification information where displayed.</li>
+          <li>Portfolio status information.</li>
+          <li>The joint asset balance.</li>
+          <li>Asset tracking and processing stages.</li>
+          <li>SWIFT-style transaction-record fields.</li>
+          <li>Beneficiary and portfolio instructions.</li>
+        </ul>
+
+        <p>
+          Information displayed within these areas is provided as part of 
+          the portfolio record presented through the portal.
+        </p>
+
+      </section>
+
+      <section class="notice">
+
+        <h2>3. Participant information</h2>
+
+        <p>
+          The Participants area presents information relating 
+          to the parties associated with the portfolio record.
+        </p>
+
+        <p>
+          Reference identifiers and other identifying fields may be partially masked or 
+          otherwise protected where displayed. Visitors should not interpret displayed information
+          as independent verification of an individual's identity or account status.
+        </p>
+
+      </section>
+
+      <section class="notice">
+
+        <h2>4. Portfolio and balance information</h2>
+
+        <p>
+          The Joint Asset Balance area presents a portfolio amount 
+          and associated currency information.
+        </p>
+
+        
+
+      </section>
+
+      <section class="notice">
+
+        <h2>5. Asset tracking information</h2>
+
+        <p>
+          The Asset Tracking History presents a ten-stage sequence covering portfolio 
+          processing, review stages, transaction-record presentation, beneficiary verification, 
+          and subsequent portfolio processing.
+        </p>
+
+        <p>
+          Status labels such as completed, current stage, pending, and future stage describe 
+          the status represented within the portal.
+        </p>
+
+      </section>
+
+      <section class="notice">
+
+        <h2>6. SWIFT-style transaction record</h2>
+
+        <p>
+          The portal includes a SWIFT-style record showing how structured
+          international payment information may be presented within an interface.
+        </p>
+
+        <p>
+          Any account numbers, routing information, institution codes, addresses,
+          references, or other transaction fields presented within the record 
+          should be handled as sensitive financial information.
+        </p>
+
+
+      </section>
+
+      <section class="notice">
+
+        <h2>7. Beneficiary instructions</h2>
+
+        <p>
+          The Instructions area provides information concerning beneficiary 
+          asset contributions and portfolio-processing procedures.
+        </p>
+
+        <p>
+          The information contained in that area should not be interpreted 
+          as an authorization to send money, transfer assets, provide banking 
+          credentials, or satisfy a financial obligation without independent verification through appropriate authorized channels.
+        </p>
+
+      </section>
+
+      <section class="notice">
+
+        <h2>8. Information submitted by visitors</h2>
+
+        <p>
+          The portal is not designed to collect passwords, online-banking
+          credentials, authentication codes, payment-card information,
+          private keys, or other sensitive financial credentials.
+        </p>
+
+      </section>
+
+      <section class="notice">
+
+        <h2>9. Information sharing and disclosure</h2>
+
+        <p>
+          Information presented through the portal may reference financial institutions,
+           government agencies, investment companies, custodians, payment systems, 
+           regulatory bodies, or other organizations.
+        </p>
+
+      </section>
+
+      <section class="notice">
+
+        <h2>10. Security and responsible use</h2>
+
+        <p>
+          The portal is intended to provide organized access to portfolio and related information.
+        </p>
+
+        <p>
+          Users should protect information displayed through the portal and should avoid entering 
+          confidential information into areas that are not specifically designated for secure collection.
+        </p>
+
+      </section>
+
+      <section class="notice">
+
+        <h2>11. Privacy questions</h2>
+
+        <p>
+          Questions concerning the presentation of information within the Joint Asset Portfolio portal 
+          should be directed through the designated project or instructional contact associated with the portal.
+        </p>
+
+        <p>
+          The Contact page provides additional information concerning the purpose and available support channels.
+        </p>
+
+      </section>
+
+      <section class="notice">
+
+        <h2>12. Information status</h2>
+
+        <p>
+          The names, photographs, reference numbers, balances, transaction fields, institutions, 
+          review stages, instructions, and other information displayed within the portal constitute 
+          the information presented through the portal
+        </p>
+
+       
+
+      </section>
+
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="footer">
+
+  <div class="container">
+
+    <div class="fg">
+
+      <div>
+        <h3>U.S DEPARTMENT OF THE TREASURY</h3>
+        <p>Joint Asset Portfolio Portal</p>
+      </div>
+
+      <div class="fl">
+        <a href="treasurywebsite.html">Portal</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+    </div>
+
+    <div class="fb">
+      © 2026 U.S Department Of The Treasury 
+    </div>
+
+    
+
+  </div>
+
+</footer>
+
+</body>
+</html>

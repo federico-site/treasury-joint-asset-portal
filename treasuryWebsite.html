@@ -1,0 +1,2472 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123f73">
+
+<title>U.S DEPARTMENT OF THE TREASURY | Joint Asset Portfolio — Fictional Simulation</title>
+
+<style>
+/* Character-rendering fix: use a dependable Unicode-capable system font and inherit it everywhere. */
+
+:root{
+  --n:#123f73;
+  --n2:#0c315b;
+  --b:#1f6fb2;
+  --bs:#eaf3fb;
+  --ink:#17212b;
+  --mut:#647180;
+  --line:#dce4ec;
+  --bg:#f4f7fa;
+  --w:#fff;
+  --g:#237a50;
+  --gs:#e9f6ef;
+  --a:#a66a00;
+  --as:#fff5dc;
+  --sh:0 10px 30px rgba(18,63,115,.09);
+  --r:18px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:88px;
+}
+
+html,
+body{
+  font-family:Arial,Helvetica,"Segoe UI",sans-serif !important;
+  font-synthesis:none;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-size:17px;
+  line-height:1.6;
+}
+
+body *{
+  font-family:inherit !important;
+}
+
+button{
+  font:inherit;
+}
+
+.container{
+  width:min(1120px,calc(100% - 32px));
+  margin:auto;
+}
+
+.photo img{
+  width:88px;
+  height:108px;
+  display:block;
+  object-fit:cover;
+  border-radius:7px;
+}
+
+.sim{
+  background:#102f50;
+  color:#fff;
+  text-align:center;
+  padding:11px 16px;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(12px);
+}
+
+.hi{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+}
+
+.logo{
+  width:48px;
+  height:48px;
+  display:block;
+  object-fit:contain;
+  border-radius:12px;
+}
+
+.logo img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.bt strong{
+  display:block;
+  font-size:18px;
+  line-height:1.1;
+}
+
+.bt span{
+  display:block;
+  color:var(--mut);
+  font-size:12px;
+}
+
+.nav{
+  display:none;
+  align-items:center;
+  gap:6px;
+}
+
+.nav a{
+  position:relative;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:750;
+  color:#243447;
+  padding:18px 12px 15px;
+  border-radius:0;
+  transition:color .2s;
+}
+
+.nav a::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  right:50%;
+  bottom:7px;
+  height:3px;
+  border-radius:99px;
+  background:var(--b);
+  transition:left .22s ease,right .22s ease;
+}
+
+.nav a:hover,
+.nav a:focus-visible{
+  color:var(--n);
+  outline:none;
+}
+
+.nav a:hover::after,
+.nav a:focus-visible::after,
+.nav a.active::after{
+  left:12px;
+  right:12px;
+}
+
+.nav a.active{
+  color:var(--n);
+  background:transparent;
+}
+
+.menu{
+  width:48px;
+  height:48px;
+  border:1px solid #cfdbe7;
+  background:#f7fafc;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  box-shadow:0 4px 12px rgba(18,63,115,.07);
+  transition:.18s;
+}
+
+.menu:hover,
+.menu:focus-visible{
+  background:var(--bs);
+  border-color:#bfd5e8;
+  outline:none;
+}
+
+.lines,
+.lines:before,
+.lines:after{
+  width:21px;
+  height:2px;
+  background:var(--n);
+  display:block;
+  content:"";
+  position:relative;
+}
+
+.lines:before{
+  position:absolute;
+  top:-7px;
+}
+
+.lines:after{
+  position:absolute;
+  top:7px;
+}
+
+.mn{
+  display:none;
+  border-top:1px solid var(--line);
+  background:#f7f9fc;
+  padding:10px 12px 16px;
+}
+
+.mn.open{
+  display:block;
+}
+
+.mn a{
+  position:relative;
+  display:flex;
+  align-items:center;
+  min-height:50px;
+  margin:5px 0;
+  padding:13px 14px;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:750;
+  color:#243447;
+  background:#fff;
+  border:1px solid #e3eaf1;
+  border-radius:12px;
+  box-shadow:0 2px 8px rgba(18,63,115,.045);
+  transition:color .18s,box-shadow .18s,border-color .18s;
+}
+
+.mn a:hover,
+.mn a:focus-visible,
+.mn a.active{
+  background:#fff;
+  border-color:#d4e2ee;
+  color:var(--n);
+  box-shadow:0 4px 14px rgba(18,63,115,.07);
+  outline:none;
+}
+
+.mn a::after{
+  content:"";
+  margin-left:auto;
+  width:34px;
+  height:3px;
+  border-radius:99px;
+  background:var(--b);
+  transform:scaleX(0);
+  transform-origin:right;
+  transition:transform .22s ease;
+}
+
+.mn a:hover::after,
+.mn a:focus-visible::after,
+.mn a.active::after{
+  transform:scaleX(1);
+}
+
+.hero{
+  padding:42px 0 26px;
+  background:linear-gradient(180deg,#fff,#f7faff);
+}
+
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--bs);
+  color:var(--n);
+  border:1px solid #d4e5f5;
+  border-radius:999px;
+  padding:7px 12px;
+  font-size:12px;
+  font-weight:850;
+  text-transform:uppercase;
+}
+
+.eyebrow i{
+  width:8px;
+  height:8px;
+  background:#3aa56c;
+  border-radius:50%;
+}
+
+.hero h1{
+  margin:18px 0 10px;
+  font-size:clamp(30px,5vw,48px);
+  line-height:1.12;
+  letter-spacing:-.035em;
+  color:var(--n);
+}
+
+.hero p{
+  margin:0;
+  max-width:720px;
+  color:#536273;
+  font-size:18px;
+}
+
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:22px;
+}
+
+.chip{
+  padding:9px 12px;
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:11px;
+  font-size:13px;
+  font-weight:700;
+  color:#46576a;
+}
+
+.section{
+  padding:30px 0;
+}
+
+.head{
+  margin-bottom:18px;
+}
+
+.kicker{
+  margin:0 0 7px;
+  color:#2878b9;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+
+.section h2{
+  margin:0;
+  color:var(--n);
+  font-size:clamp(25px,4vw,32px);
+  font-weight:800;
+  line-height:1.2;
+  letter-spacing:-.015em;
+}
+
+.intro{
+  margin:7px 0 0;
+  color:var(--mut);
+  max-width:720px;
+  font-size:15px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+}
+
+.card{
+   background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--r);
+  box-shadow:
+    0 10px 24px rgba(20,55,90,.10),
+    0 3px 8px rgba(20,55,90,.06);
+}
+
+
+
+.ov{
+  padding:20px;
+  transition:.2s;
+}
+
+.ov.click{
+  cursor:pointer;
+}
+
+.ov:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 34px rgba(18,63,115,.13);
+}
+
+.ovtop{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.ibox{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  background:var(--bs);
+  display:grid;
+  place-items:center;
+  color:var(--n);
+  font-weight:900;
+}
+
+.label{
+  font-size:13px;
+  color:var(--mut);
+  font-weight:750;
+}
+
+.big{
+  font-size:25px;
+  font-weight:900;
+  color:var(--n);
+  line-height:1.25;
+  margin-top:8px;
+}
+
+.note{
+  margin-top:7px;
+  color:#5f6d7b;
+  font-size:14px;
+}
+
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:12px;
+  font-weight:850;
+}
+
+.cur{
+  background:var(--as);
+  color:var(--a);
+}
+
+.done{
+  background:var(--gs);
+  color:var(--g);
+}
+
+.pend{
+  background:#eef2f6;
+  color:#536273;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:currentColor;
+}
+
+.linkrow{
+  display:flex;
+  justify-content:space-between;
+  margin-top:16px;
+  color:var(--b);
+  font-weight:800;
+  font-size:14px;
+}
+
+.people{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+
+.person{
+  padding:18px;
+}
+
+.ptop{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.photo{
+  width:88px;
+  height:108px;
+  flex:0 0 88px;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid #d4dce5;
+  background:#e8eef4;
+}
+
+.photo svg{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+.person h3{
+  margin:0;
+  font-size:21px;
+  color:var(--n);
+}
+
+.role{
+  font-size:13px;
+  color:var(--mut);
+}
+
+.pid{
+  margin-top:14px;
+  padding:11px 12px;
+  border-radius:11px;
+  background:#f7f9fb;
+  border:1px solid #e7edf2;
+  font-size:14px;
+}
+
+.pid strong{
+  display:block;
+  color:#506174;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.pid span{
+  font-weight:850;
+}
+
+.mini{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:12px;
+}
+
+.mf{
+  padding:10px;
+  border-radius:10px;
+  background:#fbfcfd;
+}
+
+.mf small{
+  display:block;
+  color:var(--mut);
+  font-size:11px;
+}
+
+.mf b{
+  font-size:14px;
+}
+
+.balance{
+  padding:24px;
+  background:linear-gradient(135deg,#103d70,#1c639e);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+  width:fit-content;
+  min-width:420px;
+  max-width:100%;
+}
+
+.bl{
+  font-size:13px;
+  opacity:.78;
+  font-weight:750;
+}
+
+.bv{
+  font-size:clamp(34px,8vw,54px);
+  font-weight:950;
+  letter-spacing:-.04em;
+  margin:6px 0;
+}
+
+.bs{
+  font-size:14px;
+  opacity:.8;
+}
+
+.bp{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:22px;
+}
+
+.pill{
+  padding:8px 11px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.08);
+  border-radius:10px;
+  font-size:12px;
+  font-weight:750;
+}
+
+.timeline{
+  position:relative;
+  padding:6px 0 10px;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:22px;
+  top:25px;
+  bottom:30px;
+  width:3px;
+  background:linear-gradient(#b9cadc,#dfe6ed);
+  border-radius:99px;
+}
+
+.event{
+  position:relative;
+  padding-left:58px;
+  margin-bottom:18px;
+}
+
+.marker{
+  position:absolute;
+  left:0;
+  top:17px;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:#fff;
+  border:3px solid #cbd7e2;
+  color:#607387;
+  display:grid;
+  place-items:center;
+  font-weight:950;
+  font-size:13px;
+  z-index:2;
+  box-shadow:0 3px 10px rgba(18,63,115,.08);
+}
+
+.event.done .marker{
+  border-color:#69a987;
+  color:var(--g);
+  background:#f2fbf6;
+}
+
+.event.current .marker{
+  border-color:#e0a52c;
+  background:#fff8e7;
+  color:#9a6500;
+  box-shadow:0 0 0 6px rgba(224,165,44,.12);
+  animation:stagePulse 2.6s ease-out infinite;
+}
+
+@keyframes stagePulse{
+  0%,70%,100%{
+    box-shadow:0 0 0 6px rgba(224,165,44,.12);
+  }
+
+  35%{
+    box-shadow:0 0 0 10px rgba(224,165,44,.03);
+  }
+}
+
+.ec{
+  padding:18px;
+}
+
+.eh{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.event h3{
+  margin:0;
+  font-size:19px;
+  line-height:1.3;
+  color:var(--n);
+}
+
+.loc{
+  color:var(--mut);
+  font-size:14px;
+  margin-top:4px;
+}
+
+.desc{
+  margin:12px 0 0;
+  color:#4e5d6c;
+  font-size:15px;
+}
+
+.db{
+  margin-top:14px;
+  border:0;
+  background:transparent;
+  padding:0;
+  color:var(--b);
+  font-weight:850;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.eb{
+  display:block;
+  margin-top:16px;
+  padding-top:16px;
+  border-top:1px solid var(--line);
+}
+
+.event.open .eb{
+  display:block;
+}
+
+.swift{
+  border:1px solid #d9e3ec;
+  border-radius:14px;
+  overflow:hidden;
+  background:#fbfcfe;
+}
+
+.st{
+  padding:13px 15px;
+  background:#edf4fa;
+  border-bottom:1px solid #d9e3ec;
+  color:var(--n);
+  font-weight:900;
+  font-size:13px;
+  text-transform:uppercase;
+}
+
+.scroll{
+  overflow-x:auto;
+}
+
+.swift table{
+  width:100%;
+  min-width:700px;
+  border-collapse:collapse;
+  font-size:13px;
+}
+
+.swift th,
+.swift td{
+  padding:11px 12px;
+  border-bottom:1px solid #e2e8ef;
+  text-align:left;
+  vertical-align:top;
+}
+
+.swift th{
+  background:#f5f8fb;
+  color:#516274;
+  font-size:11px;
+  text-transform:uppercase;
+}
+
+.swift td:first-child{
+  width:68px;
+  color:var(--b);
+  font-weight:900;
+}
+
+.swift td:nth-child(2){
+  width:210px;
+  font-weight:700;
+  color:#34475b;
+}
+
+.swift tr:last-child td{
+  border-bottom:0;
+}
+
+.simnote{
+  margin-top:13px;
+  padding:11px 12px;
+  border-radius:10px;
+  background:#f3f6f9;
+  color:#617080;
+  font-size:12px;
+  border:1px dashed #ccd7e2;
+}
+
+.disclaimer{
+  padding:22px;
+  border-left:5px solid var(--b);
+}
+
+.disclaimer h3{
+  margin:0 0 8px;
+  color:var(--n);
+  font-size:20px;
+}
+
+.disclaimer p{
+  margin:7px 0;
+  color:#536273;
+  font-size:15px;
+}
+
+.instructions{
+  display:grid;
+  gap:10px;
+}
+
+.instruction{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+}
+
+.instruction button{
+  width:100%;
+  border:0;
+  background:#fff;
+  padding:17px;
+  text-align:left;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  color:var(--n);
+  font-weight:850;
+}
+
+.step{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:var(--bs);
+  display:grid;
+  place-items:center;
+  color:var(--n);
+  font-size:12px;
+  flex:0 0 34px;
+}
+
+.chev{
+  margin-left:auto;
+  font-size:20px;
+  transition:.2s;
+}
+
+.instruction.open .chev{
+  transform:rotate(180deg);
+}
+
+.ic{
+  display:none;
+  padding:0 17px 17px 64px;
+  color:#5a6877;
+  font-size:15px;
+}
+
+.instruction.open .ic{
+  display:block;
+}
+
+.instruction-doc{
+  padding:24px;
+}
+
+.instruction-meta{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-bottom:24px;
+}
+
+.meta-item{
+  padding:13px;
+  border:1px solid #e3eaf1;
+  background:#f8fafc;
+  border-radius:11px;
+}
+
+.meta-item small{
+  display:block;
+  color:var(--mut);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin-bottom:4px;
+}
+
+.meta-item strong{
+  color:var(--n);
+  font-size:14px;
+}
+
+.instruction-section{
+  padding:20px 0;
+  border-top:1px solid var(--line);
+}
+
+.instruction-section h3{
+  margin:0 0 10px;
+  color:var(--n);
+  font-size:19px;
+}
+
+.instruction-section p{
+  color:#4e5d6c;
+  font-size:15px;
+}
+
+.instruction-fields{
+  display:grid;
+  gap:9px;
+  margin:14px 0;
+}
+
+.instruction-fields > div{
+  padding:12px;
+  border:1px solid #e3eaf1;
+  border-radius:10px;
+  background:#f8fafc;
+}
+
+.instruction-fields span{
+  display:block;
+  color:var(--mut);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin-bottom:4px;
+}
+
+.instruction-fields strong{
+  color:#243447;
+  font-size:14px;
+}
+
+.address-block{
+  margin:14px 0;
+  padding:15px;
+  border-left:4px solid var(--b);
+  background:#f5f8fb;
+  border-radius:0 10px 10px 0;
+  color:#3f5061;
+  font-size:14px;
+}
+
+.rep{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  padding:15px;
+  background:#f7f9fb;
+  border:1px solid #e3eaf1;
+  border-radius:11px;
+}
+
+.rep strong{
+  color:var(--n);
+}
+
+.rep span{
+  color:var(--mut);
+  font-size:13px;
+}
+
+.footer{
+  margin-top:25px;
+  padding:28px 0;
+  background:#102f50;
+  color:#fff;
+}
+
+.fg{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:18px;
+}
+
+.footer h3{
+  margin:0;
+  font-size:18px;
+}
+
+.footer p{
+  margin:4px 0 0;
+  color:#cbd8e5;
+  font-size:13px;
+}
+
+.fl{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:18px;
+  text-align:center;
+}
+
+.fl a{
+  color:#fff;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  font-size:13px;
+}
+
+.fb{
+  margin-top:22px;
+  padding-top:18px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.14);
+  color:#b9c9d8;
+  font-size:12px;
+}
+
+.footersim{
+  margin-top:12px;
+  color:#d9e4ee;
+  font-size:11px;
+  line-height:1.5;
+}
+
+@media(min-width:700px){
+  .nav{
+    display:flex;
+  }
+
+  .menu{
+    display:none;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .people{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .person{
+    transition:
+      transform .2s ease,
+      box-shadow .2s ease;
+  }
+
+  .person:hover{
+    transform:translateY(-3px);
+    box-shadow:
+      0 14px 30px rgba(20,55,90,.12),
+      0 4px 10px rgba(20,55,90,.06);
+  }
+
+  .balance{
+    width:70%;
+    min-width:0;
+    max-width:760px;
+  }
+
+
+  .instruction-meta{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1024px){
+  .container{
+    width:calc(100% - 72px);
+  }
+
+  .hero{
+    padding-top:52px;
+  }
+
+
+  .section{
+    padding-top:38px;
+    padding-bottom:38px;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1024px){
+  .header{
+    padding-top:24px !important;
+  }
+
+  .hi{
+    padding-top:0 !important;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1024px){
+  .hi{
+    min-height:64px;
+    gap:14px;
+  }
+
+  .bt strong{
+    font-size:15px;
+    line-height:18px;
+  }
+
+  .bt span{
+    font-size:11px;
+    line-height:15px;
+  }
+
+  .logo{
+    width:42px;
+    height:42px;
+  }
+
+  .nav{
+    gap:12px;
+  }
+
+  .nav a{
+    font-size:12px;
+  }
+}
+
+
+@media(max-width:699px){
+
+  .container{
+    width:100%;
+    max-width:none;
+    padding-left:18px;
+    padding-right:18px;
+  }
+
+  .mn{
+    padding-left:18px;
+    padding-right:18px;
+  }
+
+  .hero h1{
+    font-size:24px !important;
+  }
+
+  .hero p{
+    font-size:15px !important;
+  }
+
+  /* Mobile typography */
+
+  .bt strong{
+    font-size:15px !important;
+    line-height:1.2;
+  }
+
+  .bt span{
+    font-size:12px !important;
+    line-height:1.3;
+  }
+
+  .notice-title{
+    font-size:28px;
+    line-height:1.2;
+    font-weight:700;
+  }
+
+  .section-title,
+  .head h2{
+    font-size:23px;
+    line-height:1.25;
+    font-weight:700;
+  }
+
+  .intro,
+  .section-lead{
+    font-size:15px;
+    line-height:1.6;
+    font-weight:400;
+  }
+
+  .card h3,
+  .party-name,
+  .stage-title{
+    font-size:17px;
+    line-height:1.35;
+    font-weight:700;
+  }
+
+  .body-text,
+  .instruction-doc p{
+    font-size:15px;
+    line-height:1.6;
+  }
+
+  .balance{
+    width:100%;
+    min-width:0;
+    max-width:none;
+  }
+
+  .balance-value,
+  .big-value{
+    font-size:24px;
+    line-height:1.2;
+    font-weight:700;
+  }
+
+  .kicker,
+  .eyebrow,
+  .meta-item small{
+    font-size:11px;
+    line-height:1.4;
+    font-weight:700;
+    letter-spacing:.06em;
+  }
+
+  .small-text,
+  .meta-item{
+    font-size:13px;
+    line-height:1.5;
+  }
+
+  .mn a{
+    font-size:15px;
+    line-height:1.3;
+  }
+
+  /* SWIFT record */
+
+  .swift .scroll{
+    overflow:visible;
+  }
+
+  .swift table,
+  .swift thead,
+  .swift tbody,
+  .swift tr,
+  .swift th,
+  .swift td{
+    display:block;
+    width:100%;
+    min-width:0;
+  }
+
+  .swift thead{
+    display:none;
+  }
+
+  .swift tbody tr{
+    padding:13px 14px;
+    border-bottom:1px solid #e2e8ef;
+  }
+
+  .swift tbody tr:last-child{
+    border-bottom:0;
+  }
+
+  .swift td{
+    padding:0;
+    border:0;
+  }
+
+  .swift td:first-child{
+    width:auto;
+    font-size:13px;
+    margin-bottom:3px;
+    color:var(--b);
+    font-weight:900;
+  }
+
+  .swift td:nth-child(2){
+    width:auto;
+    font-size:13px;
+    color:#34475b;
+    font-weight:750;
+    margin-bottom:7px;
+  }
+
+  .swift td:nth-child(3){
+    width:auto;
+    padding:9px 10px;
+    background:#f7f9fc;
+    border:1px solid #e3eaf1;
+    border-radius:9px;
+    color:#26384a;
+    font-size:13px;
+    line-height:1.55;
+    overflow-wrap:anywhere;
+  }
+
+  .swift .st{
+    font-size:12px;
+  }
+
+
+
+  .instruction-meta{
+    grid-template-columns:1fr;
+  }
+
+  .eh{
+    flex-direction:column;
+  }
+
+  .event{
+    padding-left:54px;
+  }
+
+  .timeline:before{
+    left:20px;
+  }
+
+  .marker{
+    width:42px;
+    height:42px;
+  }
+
+  .instruction-doc{
+    padding:18px;
+  }
+
+  .fg h3{
+  font-size:14px !important;
+  line-height:1.2;
+}
+
+.fg p{
+  font-size:12px !important;
+  line-height:1.4;
+}
+
+.fb{
+  font-size:10px !important;
+  line-height:1.4;
+}
+
+}
+
+@media(min-width:700px){
+  .mn{
+    display:none!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
+</style>
+</head>
+
+<body id="top">
+
+
+
+<header class="header">
+  <div class="container hi">
+
+    <a class="brand" href="#top">
+      <img
+        class="logo"
+        src="images/Seal_of_the_United_States_Department_of_the_Treasury.svg-removebg-preview.png"
+        alt="U.S DEPARTMENT OF THE TREASURY Joint Asset Portal"
+      >
+
+      <span class="bt">
+        <strong>U.S DEPARTMENT OF THE TREASURY</strong>
+        <span>Joint Asset Portfolio Portal</span>
+      </span>
+    </a>
+
+    <nav class="nav">
+      <a href="#overview">Overview</a>
+      <a href="#parties">Participants</a>
+      <a href="#balance">Balance</a>
+      <a href="#tracking">Tracking</a>
+      <a href="#instructions">Instructions</a>
+    </nav>
+
+    <button
+      class="menu"
+      id="menu"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      title="Open navigation"
+    >
+      <span class="lines"></span>
+    </button>
+
+  </div>
+
+  <div class="mn" id="mn">
+    <a href="#overview">Overview</a>
+    <a href="#parties">Participants</a>
+    <a href="#balance">Balance</a>
+    <a href="#tracking">Tracking</a>
+    <a href="#instructions">Instructions</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">
+      <i></i>
+      Portfolio information portal
+    </span>
+
+    <h1>Joint Asset Portfolio</h1>
+
+    <p>
+      An overview of participant information, portfolio details, current status, and asset tracking history.
+    </p>
+
+    <div class="chips">
+      <span class="chip">Reference: AST-IACD/2026/230048842</span>
+      <span class="chip">Currency: USD</span>
+      <span class="chip">Record type: Portfolio Record</span>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="overview">
+  <div class="container">
+
+    <div class="head">
+      <p class="kicker">At a glance</p>
+      <h2>Quick Overview</h2>
+      <p class="intro">
+        A concise summary of the principal information associated with the portfolio record.
+      </p>
+    </div>
+
+    <div class="grid">
+
+      <article class="card ov">
+        <div class="ovtop">
+          <div>
+            <div class="label">Current Status</div>
+            <div class="big" style="font-size:21px">
+              Pending Beneficiary Verification
+            </div>
+          </div>
+          <div class="ibox">✓</div>
+        </div>
+
+        <div class="note">
+          <span class="status cur">
+            <span class="dot"></span>
+            Current stage
+          </span>
+        </div>
+      </article>
+
+
+      <article class="card ov">
+        <div class="ovtop">
+          <div>
+            <div class="label">Joint Asset Balance</div>
+            <div class="big">$2,447,488.42</div>
+          </div>
+          <div class="ibox">$</div>
+        </div>
+
+        <div class="note">
+          United States Dollar 
+        </div>
+      </article>
+
+
+      <article
+        class="card ov click"
+        id="jump"
+        tabindex="0"
+        role="button"
+      >
+        <div class="ovtop">
+          <div>
+            <div class="label">Asset Tracking</div>
+            <div class="big">10 Stages</div>
+          </div>
+          <div class="ibox">→</div>
+        </div>
+
+        <div class="linkrow">
+          <span>View Asset Tracking History</span>
+          <span>›</span>
+        </div>
+      </article>
+
+
+      <article class="card ov">
+        <div class="ovtop">
+          <div>
+            <div class="label">Record Status</div>
+            <div class="big" style="font-size:21px">
+              Active Record
+            </div>
+          </div>
+          <div class="ibox">i</div>
+        </div>
+
+        <div class="note">
+          Prepared for portfolio administration and record reference.
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="parties">
+  <div class="container">
+
+    <div class="head">
+      <p class="kicker">Information on file</p>
+      <h2>Participants</h2>
+      <p class="intro">
+        The following participant information is maintained on file for identification and portfolio administration purposes.
+      </p>
+    </div>
+
+    <div class="people">
+
+      <article class="card person">
+
+        <div class="ptop">
+
+         <div class="photo">
+            <img
+              src="images/Jessie-soto.jpg"
+              alt="Party A participant"
+            >
+          </div>
+
+          <div>
+            <h3>Jessie Soto</h3>
+            <div class="role">Party A · Participant</div>
+          </div>
+
+        </div>
+
+        <div class="pid">
+          <strong>Reference ID</strong>
+          <span>000884476BF66790</span>
+        </div>
+
+        <div class="pid">
+          <strong>SSN</strong>
+          <span>*****7503</span>
+         </div>
+
+        <div class="mini">
+          <div class="mf">
+            <small>Record type</small>
+            <b>Participant</b>
+          </div>
+
+          <div class="mf">
+            <small>Profile status</small>
+            <b>On file</b>
+          </div>
+        </div>
+
+      </article>
+
+
+      <article class="card person">
+
+        <div class="ptop">
+
+          <div class="photo">
+              <img
+                src="images/Joseph-eddy.jpg"
+                alt="Party B participant"
+              >
+            </div>
+
+          <div>
+            <h3>Joseph Eddy</h3>
+            <div class="role">Party B · Participant</div>
+          </div>
+
+        </div>
+
+        <div class="pid">
+          <strong>Reference ID</strong>
+          <span>000731925CD48216</span>
+        </div>
+
+        <div class="pid">
+          <strong>SSN</strong>
+          <span>*****2876</span>
+        </div>
+
+        <div class="mini">
+          <div class="mf">
+            <small>Record type</small>
+            <b>Participant</b>
+          </div>
+
+          <div class="mf">
+            <small>Profile status</small>
+            <b>On file</b>
+          </div>
+        </div>
+
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="balance">
+  <div class="container">
+
+    <div class="head">
+      <p class="kicker">Portfolio summary</p>
+      <h2>Joint Asset Balance</h2>
+      <p class="intro">
+        The current balance associated with the joint asset portfolio is presented below.
+      </p>
+    </div>
+
+    <div class="balance card">
+
+      <div class="bl">TOTAL JOINT ASSET BALANCE</div>
+
+      <div class="bv">USD 2,447,488.42</div>
+
+      <div class="bs">
+        Portfolio balance · Current recorded asset value
+      </div>
+
+      <div class="bp">
+        <span class="pill">Joint portfolio</span>
+        <span class="pill">Currency: USD</span>
+        <span class="pill">Active record</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="tracking">
+  <div class="container">
+
+    <div class="head">
+      <p class="kicker">10-stage history</p>
+      <h2>Asset Tracking History</h2>
+      <p class="intro">
+        The following timeline presents the recorded sequence of asset processing, review, verification, and portfolio transfer stages.
+      </p>
+    </div>
+
+    <div class="timeline">
+
+
+      <article class="event done">
+
+        <div class="marker">01</div>
+
+        <div class="card ec">
+
+          <div class="eh">
+
+            <div>
+              <h3>German Investment Company</h3>
+              <div class="loc">
+                Atlas Wealth Management, Inc.
+              </div>
+            </div>
+
+            <span class="status done">
+              <span class="dot"></span>
+              Completed
+            </span>
+
+          </div>
+
+          <p class="desc">
+            Initial portfolio processing and asset registration.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="event done">
+
+        <div class="marker">02</div>
+
+        <div class="card ec">
+
+          <div class="eh">
+
+            <div>
+              <h3>Custodian Bank</h3>
+              <div class="loc">
+                HSBC Continental Europe · Germany
+              </div>
+            </div>
+
+            <span class="status done">
+              <span class="dot"></span>
+              Completed
+            </span>
+
+          </div>
+
+          <p class="desc">
+            Custodial processing associated with the portfolio assets.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="event done">
+
+        <div class="marker">03</div>
+
+        <div class="card ec">
+
+          <div class="eh">
+
+            <div>
+              <h3>International Payment / SWIFT Instruction</h3>
+              <div class="loc">
+                International Transaction Record
+              </div>
+            </div>
+
+            <span class="status done">
+              <span class="dot"></span>
+              Recorded
+            </span>
+
+          </div>
+
+          <p class="desc">
+            International payment instruction and associated transaction record.
+          </p>
+
+          <!-- <button class="db">
+            Show SWIFT record ▾
+          </button> -->
+
+          <div class="eb">
+
+            <div class="swift">
+
+              <div class="st">
+                International SWIFT Transaction Record · Payment Instruction
+              </div>
+
+              <div class="scroll">
+
+                <table>
+
+                  <thead>
+                    <tr>
+                      <th>Field</th>
+                      <th>Description</th>
+                      <th>Record</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+
+                    <tr>
+                      <td>:20:</td>
+                      <td>Sender's Reference</td>
+                      <td>UJVNR2025090812345678</td>
+                    </tr>
+
+                    <tr>
+                      <td>:23B:</td>
+                      <td>Bank Operation Code</td>
+                      <td>CRED</td>
+                    </tr>
+
+                    <tr>
+                      <td>:32A:</td>
+                      <td>Value Date / Currency / Amount</td>
+                      <td>261001USD2447488,42</td>
+                    </tr>
+
+                    <tr>
+                      <td>:50K:</td>
+                      <td>Ordering Customer</td>
+                      <td>
+                        /DE82300308800123456789<br>
+                        HSBC Continental Europe<br>
+                        Hansaallee 3, 40549 Düsseldorf,<br>
+                        GERMANY
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>:52A:</td>
+                      <td>Ordering Institution</td>
+                      <td>DEUTDEFFXXX</td>
+                    </tr>
+
+                    <tr>
+                      <td>:56A:</td>
+                      <td>Intermediary Institution</td>
+                      <td> IRVTUS3N</td>
+                    </tr>
+
+                    <tr>
+                      <td>:57A:</td>
+                      <td>Account With Institution</td>
+                      <td>
+                        VGRDUS33XXX<br>
+                        //FW021000021
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>:59:</td>
+                      <td>Beneficiary</td>
+                      <td>
+                        /31243149<br>
+                        104 1211 Enterprise Dr Belle Plaine, MN 56011<br>
+                        UNITED STATES
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>:70:</td>
+                      <td>Remittance Information</td>
+                      <td>
+                        INV-2026-0421<br>
+                        ASSET TRANSFER FROM GERMANY
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>:71A:</td>
+                      <td>Details of Charges</td>
+                      <td>OUR</td>
+                    </tr>
+
+                  </tbody>
+
+                </table>
+
+              </div>
+
+            </div>
+
+            <div class="simnote">
+              All account numbers, routing details, institution codes, names,
+              and addresses above are non-operational placeholders for a
+              fictional educational simulation.
+            </div>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="event done">
+
+        <div class="marker">04</div>
+
+        <div class="card ec">
+
+          <div class="eh">
+
+            <div>
+              <h3>IMF Review</h3>
+              <div class="loc">
+                Asset Review
+              </div>
+            </div>
+
+            <span class="status done">
+              <span class="dot"></span>
+              Completed
+            </span>
+
+          </div>
+
+          <p class="desc">
+            Assets proceed through the applicable review process.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="event done">
+
+        <div class="marker">05</div>
+
+        <div class="card ec">
+
+          <div class="eh">
+
+            <div>
+              <h3>OFAC Review</h3>
+              <div class="loc">
+                International Sanctions Review
+              </div>
+            </div>
+
+            <span class="status done">
+              <span class="dot"></span>
+              Completed
+            </span>
+
+          </div>
+
+          <p class="desc">
+            Assets proceed through the applicable international sanctions review process.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="event done">
+
+        <div class="marker">06</div>
+
+        <div class="card ec">
+
+          <div class="eh">
+
+            <div>
+              <h3>Beneficiary Financial Records Review</h3>
+              <div class="loc">
+                Financial Records Review
+              </div>
+            </div>
+
+            <span class="status done">
+              <span class="dot"></span>
+              Completed
+            </span>
+
+          </div>
+
+          <p class="desc">
+            Financial records associated with the beneficiary are 
+            reviewed as part of the verification process.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="event done">
+
+        <div class="marker">07</div>
+
+        <div class="card ec">
+
+          <div class="eh">
+
+            <div>
+              <h3>Asset Transfer: Vanguard to Fidelity</h3>
+              <div class="loc">
+                Vanguard → Fidelity
+              </div>
+            </div>
+
+            <span class="status done">
+              <span class="dot"></span>
+              Completed
+            </span>
+
+          </div>
+
+          <p class="desc">
+            The assets were transferred from the Vanguard account to the designated Fidelity account for the next stage of processing.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="event current">
+
+        <div class="marker">08</div>
+
+        <div class="card ec">
+
+          <div class="eh">
+
+            <div>
+              <h3>Return to Vanguard</h3>
+              <div class="loc">
+                Beneficiary verification stage
+              </div>
+            </div>
+
+            <span class="status cur">
+              <span class="dot"></span>
+              Current stage
+            </span>
+
+          </div>
+
+          <p class="desc">
+            The transaction is currently pending completion of beneficiary verification with Vanguard.
+          </p>
+
+          <div class="simnote">
+            This status reflects the current processing stage and remains subject to verification.
+          </div>
+
+        </div>
+
+      </article>
+
+
+      <article class="event">
+
+        <div class="marker">09</div>
+
+        <div class="card ec">
+
+          <div class="eh">
+
+            <div>
+              <h3>Beneficiary Verification</h3>
+              <div class="loc">
+                Verification Stage
+              </div>
+            </div>
+
+            <span class="status pend">
+              <span class="dot"></span>
+              Pending
+            </span>
+
+          </div>
+
+          <p class="desc">
+            Following successful completion of beneficiary verification, 
+            the portfolio proceeds to the next processing stage.
+          </p>
+
+        </div>
+
+      </article>
+
+
+      <article class="event">
+
+        <div class="marker">10</div>
+
+        <div class="card ec">
+
+          <div class="eh">
+
+            <div>
+              <h3>Atlas Wealth Management Portfolio</h3>
+              <div class="loc">
+                United States · Portfolio Destination
+              </div>
+            </div>
+
+            <span class="status pend">
+              <span class="dot"></span>
+              Final stage
+            </span>
+
+          </div>
+
+          <p class="desc">
+            Upon completion of the preceding verification and processing stages, the assets proceed
+             to the designated Atlas Wealth Management portfolio in the United States.
+          </p>
+
+        </div>
+
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="disclaimer">
+  <div class="container">
+
+    <div class="card disclaimer">
+
+      <p class="kicker">Important information</p>
+
+      <h3>Disclaimer</h3>
+
+      <p>
+        Information displayed on this portal is provided for informational purposes and is 
+        subject to verification, applicable policies, and relevant review procedures.
+      </p>
+
+      <p>
+        Portfolio balances, participant records, asset statuses, tracking information, and other
+        information displayed on this portal may be updated as processing progresses.
+      </p>
+
+       <p>
+        Displayed information does not constitute confirmation of settlement, transfer, ownership, 
+        entitlement, or completion of any financial or regulatory process.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" id="instructions">
+
+  <div class="container">
+
+    <div class="head">
+      <p class="kicker">BENEFICIARY INSTRUCTIONS</p>
+      <h2>Asset Contribution Instructions</h2>
+
+      <p class="intro">
+        The following information sets out the requirements and procedures associated
+    with the beneficiary’s asset contribution.
+      </p>
+    </div>
+
+
+    <div class="instruction-meta">
+
+        <div class="meta-item">
+          <small>Reference No.</small>
+          <strong>CC-AST-88301-4491-US</strong>
+        </div>
+
+        <div class="meta-item">
+          <small>Date</small>
+          <strong>October 1 2026</strong>
+        </div>
+
+        <div class="meta-item">
+          <small>Beneficiary</small>
+          <strong>JOSEPH E. EDDY</strong>
+        </div>
+
+        <div class="meta-item">
+          <small>Asset Portfolio</small>
+          <strong>Atlas Wealth Management Inc.</strong>
+        </div>
+
+        <div class="meta-item">
+          <small>Portfolio Manager</small>
+          <strong>Glenda A. Hodges</strong>
+        </div>
+
+      </div>
+
+
+      <div class="instruction-section">
+
+        <h3>Contribution Instructions</h3>
+
+        <p>
+          To initiate the review and potential integration of the beneficiary's 
+          assets into the existing Atlas Wealth Management Inc. portfolio—under 
+          the custody and supervision of the State Treasury Department.
+        </p>
+
+        <p>
+          The beneficiary must remit a contribution of
+          <strong>$147,000 (One Hundred Forty-Seven Thousand Dollars)</strong>
+          as mandated by the applicable Asset Transfer Regulations Agreement.
+        </p>
+
+        <p>
+          Where settlement via cashier's check has been explicitly designated as required, 
+          the instrument must be issued directly by an accredited financial institution
+           and prepared in accordance with the following specifications:
+        </p>
+
+
+        <div class="instruction-fields">
+
+          <div>
+            <span>Amount</span>
+            <strong>
+              $147,000 (One Hundred Forty-Seven Thousand Dollars)
+            </strong>
+          </div>
+
+          <div>
+            <span>Payable to</span>
+            <strong>Glenda A. Hodges</strong>
+          </div>
+
+          <div>
+            <span>Purpose</span>
+            <strong>ASSET CONTRIBUTION</strong>
+          </div>
+
+          <div>
+            <span>Reference</span>
+            <strong>CC-AST-88301-4491-US</strong>
+          </div>
+
+        </div>
+
+
+        <p>
+          The cashier's check should be associated with:
+        </p>
+
+        <div class="address-block">
+          <strong>GLENDA A. HODGES</strong><br>
+          52 Druid Ct, Dahlonega GA 30533<br>
+          Attn: Appointed Asset Portfolio Manager
+        </div>
+
+        <p>
+          Upon receipt, the contribution will be subject to applicable
+          identity verification, source-of-funds review, compliance checks,
+          and confirmation of the payment.
+        </p>
+
+        <p>
+           Any proposed addition or merger of the beneficiary's assets with 
+           the existing portfolio will occur only in accordance with the 
+           governing investment agreement and applicable law.
+        </p>
+
+        <p>
+          A receipt will be provided after the payment has been received and verified.
+        </p>
+
+      </div>
+
+
+      <div class="instruction-section">
+
+        <h3>Important Payment Verification Notice</h3>
+
+        
+
+        <p>
+          Prior to obtaining or delivering the cashier’s check, the beneficiary shall 
+          verify the payee name, amount, delivery address, and payment instructions to 
+          ensure secure delivery to the designated address and authorized representative 
+          (asset portfolio manager) assigned by the appropriate board of trustees and governing authorities.
+        </p>
+
+        
+
+      </div>
+
+
+      <div class="instruction-section">
+
+        <h3>Authorized Representative</h3>
+
+        <div class="rep">
+          <strong>GLENDA A. HODGES</strong>
+          <span>Appointed Asset Portfolio Manager</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+  <div class="container">
+
+    <div class="fg">
+
+      <div>
+        <h3>U.S DEPARTMENT OF THE TREASURY</h3>
+        <p>Joint Asset Portfolio Portal</p>
+      </div>
+
+      <div class="fl">
+        
+        <a href="privacy.html">Privacy Notice</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+    </div>
+
+    <div class="fb">
+      © 2026 U.S DEPARTMENT OF THE TREASURY · All rights reserved.
+    </div>
+
+    
+
+  </div>
+
+</footer>
+
+
+<script>
+const m = document.getElementById('menu');
+const n = document.getElementById('mn');
+
+m.onclick = () => {
+  const o = n.classList.toggle('open');
+
+  m.setAttribute('aria-expanded', o);
+  m.setAttribute(
+    'aria-label',
+    o ? 'Close navigation' : 'Open navigation'
+  );
+};
+
+document.querySelectorAll('.mn a').forEach(a => {
+  a.onclick = () => {
+    n.classList.remove('open');
+
+    m.setAttribute('aria-expanded', 'false');
+    m.setAttribute('aria-label', 'Open navigation');
+  };
+});
+
+
+const j = document.getElementById('jump');
+
+j.onclick = () => {
+  document.getElementById('tracking').scrollIntoView({
+    behavior:'smooth'
+  });
+};
+
+j.onkeydown = e => {
+  if(e.key === 'Enter' || e.key === ' '){
+    e.preventDefault();
+    j.click();
+  }
+};
+
+
+
+
+
+document.querySelectorAll('.instruction button').forEach(b => {
+
+  b.onclick = () => {
+    b.closest('.instruction').classList.toggle('open');
+  };
+
+});
+</script>
+
+
+<script>
+(function(){
+
+  const links = [
+    ...document.querySelectorAll('.nav a, .mn a')
+  ];
+
+  const sections = [
+    ...document.querySelectorAll('main section[id]')
+  ].filter(s =>
+    [
+      'overview',
+      'parties',
+      'balance',
+      'tracking',
+      'instructions'
+    ].includes(s.id)
+  );
+
+
+  function setActive(id){
+
+    links.forEach(a => {
+
+      a.classList.toggle(
+        'active',
+        a.getAttribute('href') === '#' + id
+      );
+
+    });
+
+  }
+
+
+  
+
+
+  const io = new IntersectionObserver(
+
+    entries => {
+
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort(
+          (a,b) =>
+            b.intersectionRatio - a.intersectionRatio
+        );
+
+      if(visible[0]){
+        setActive(visible[0].target.id);
+      }
+
+    },
+
+    {
+      rootMargin:'-18% 0px -62% 0px',
+      threshold:[0,.2,.5,.8]
+    }
+
+  );
+
+
+  sections.forEach(s => io.observe(s));
+
+
+  links.forEach(a => {
+
+    a.addEventListener(
+      'click',
+      () => setActive(
+        a.getAttribute('href').slice(1)
+      )
+    );
+
+  });
+
+})();
+</script>
+
+</body>
+</html>
